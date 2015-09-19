@@ -90,7 +90,7 @@ fn main() {
     println!("input: {:?}", input_data);
     for i in input_data.iter() {
         println!("input: {:?}", i);
-        let output = expected_output(i);
+        let output = expected_output(&i);
         println!("output: {}", output);
     }
 }
