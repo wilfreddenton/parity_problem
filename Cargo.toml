@@ -1,0 +1,7 @@
+[package]
+name = "parity_problem"
+version = "0.1.0"
+authors = ["Wilfred Denton <dentonw3@gmail.com>"]
+
+[dependencies]
+rand = "0.3"
