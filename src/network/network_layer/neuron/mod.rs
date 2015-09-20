@@ -14,7 +14,7 @@ impl Neuron {
         let mut v = self.bias;
         for (w, x) in self.weights.iter().zip(inputs.iter()) {
             v = v + w * x;
-        } 
+        }
         v
     }
     fn activation_function(&self, activation_potential: f64) -> f64 {
@@ -22,7 +22,7 @@ impl Neuron {
         println!("phi: {}", phi);
         self.alpha * phi * (1.0 - phi)
     }
-    pub fn new(alpha: f64, num_inputs: u32) -> Neuron {
+    pub fn new(alpha: f64, num_inputs: usize) -> Neuron {
         let between = Range::new(-1.0, 1.0);
         let mut rng = rand::thread_rng();
         let mut weights: Vec<f64> = Vec::new();
@@ -43,3 +43,4 @@ impl Neuron {
         phi_prime
     }
 }
+
