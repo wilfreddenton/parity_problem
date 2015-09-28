@@ -16,8 +16,13 @@ impl NetworkLayer {
             neurons: neurons,
         }
     }
-    pub fn signal_neurons(&self, inputs: &Vec<f64>) -> Vec<f64> {
-        let mut outputs: Vec<f64> = Vec::new();
+    pub fn update_weights(&mut self, delta_weights: &Vec<Vec<f32>>) {
+        for (dw, n) in delta_weights.iter().zip(self.neurons.iter_mut()) {
+           n.update_weights(dw);
+        }
+    }
+    pub fn signal_neurons(&self, inputs: &Vec<f32>) -> Vec<f32> {
+        let mut outputs: Vec<f32> = Vec::new();
         for n in self.neurons.iter() {
             outputs.push(n.signal(inputs));
         }
