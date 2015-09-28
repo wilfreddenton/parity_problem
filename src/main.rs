@@ -20,7 +20,7 @@ fn main() {
             network.backpropagate(&input, &outputs, &expected_outputs, eta);
             let output_layer_outputs: Vec<f32> = outputs.pop().unwrap();
             if converged == true && 0.05 < output_error(&output_layer_outputs, &expected_outputs) {
-                println!("{:?}\t{}", input, output_error(&output_layer_outputs, &expected_outputs)); 
+                println!("{:?}\t{}", input, output_error(&output_layer_outputs, &expected_outputs));
                 converged = false;
             }
         }
@@ -30,7 +30,8 @@ fn main() {
         converged = true;
     }
     for input in input_data.iter() {
-        println!("Output: {:?}\tExpected Output: {:?}", network.feed(&input).unwrap(), expected_output(&input));
+        let outputs: Vec<Vec<f32>> = network.feed(&input).unwrap();
+        println!("Output: {:?}\tExpected Output: {:?}", outputs[outputs.len() - 1], expected_output(&input));
     }
 }
 

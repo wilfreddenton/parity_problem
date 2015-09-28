@@ -33,11 +33,14 @@ pub fn expected_output(input: &Vec<f32>) -> f32 {
 }
 
 pub fn output_error(layer_outputs: &Vec<f32>, expected_outputs: &Vec<f32>) -> f32 {
-    let mut sum_e_sqrd = 0.0;
+    // let mut sum_e_sqrd = 0.0;
+    let mut sum_e = 0.0;
     for (d, y) in expected_outputs.iter().zip(layer_outputs.iter()) {
-        sum_e_sqrd = sum_e_sqrd + (d - y).powf(2.0);
+        sum_e = sum_e + (d - y).abs();
+        // sum_e_sqrd = sum_e_sqrd + (d - y).powf(2.0);
     }
-    0.5 * sum_e_sqrd
+    sum_e
+    // 0.5 * sum_e_sqrd
 }
 
 pub fn phi_prime(a: f32, phi: f32) -> f32 {
