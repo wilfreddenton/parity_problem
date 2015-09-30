@@ -11,6 +11,10 @@ fn permutations(perms: &mut Vec<Vec<f32>>, perm: &mut Vec<f32>, elements: &[f32]
     }
 }
 
+pub fn etas() -> Vec<f32> {
+    vec![0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]
+}
+
 pub fn generate_input_data() -> Vec<Vec<f32>> {
     let mut perms: Vec<Vec<f32>> = Vec::new();
     let mut perm: Vec<f32> = Vec::new();
@@ -41,10 +45,6 @@ pub fn output_error(layer_outputs: &Vec<f32>, expected_outputs: &Vec<f32>) -> f3
     }
     sum_e
     // 0.5 * sum_e_sqrd
-}
-
-pub fn phi_prime(a: f32, phi: f32) -> f32 {
-    a * phi * (1.0 - phi)
 }
 
 // tests
